@@ -1,31 +1,39 @@
 
 def sortNumbers(data, condition):
- list1 = [];
- i = 0;
- l = 0;
- if condition == "ASC":   
-  for n in range(len(data)):   
-     for q in range(len(data) - 1):
-      if i <= data[q]:
-        i = data[q];
-      else: continue
-      for q in range(len(data) - 1):
-          if i > data[q]:
-            i = data[q] 
-          elif i < data[q]:
-           continue
-          data.remove(i);
-          list1.append(i); 
- elif condition == "DESC":
-        pass
- return list1;
+ if condition == "ASC":
+  for last in range(len(data)-1):
+    for i in range(len(data)-1):
+      if data[i]>data[i+1]:
+        data[i],data[i+1]=data[i+1],data[i]
+  return data
+ if condition == "DESC":
+   for last in range(len(data)-1):
+    for i in range(last):
+      if data[i] < data[i+1]:
+        data[i],data[i+1]=data[i+1],data[i]
+   return data
 
+def sortData(data, weights, condition):
+  if len(data) == len(weights):
+   if condition == "ASC":
+     for last in range(len(data)-1):
+      for i in range(len(data)-1):
+        if data[i] > data[i+1]:
+          data[i],data[i+1]=data[i+1],data[i]
+          weights[i],weights[i+1]=weights[i+1],weights[i]
+     return weights
+   if condition == "DESC":
+     for last in range(len(data)-1):
+      for i in range(len(data)-1):
+        if data[i] < data[i+1]:
+          data[i],data[i+1]=data[i+1],data[i]
+          weights[i],weights[i+1]=weights[i+1],weights[i]
+     return weights
+  else:
+        raise ValueError('Invalid input data')
 
-
-
-def sortData(weights, data, condition):
-    pass
-
-
-data = [4,2,3, 5, 6, 7];
-print(sortNumbers(data, 'ASC'))
+data = [4,2,8, 5, 6,7,0,234,34,56,23,78,990,765];
+manufactures = ['Ford','BMW','Audi'];
+weights = [2,5,6];
+print(sortNumbers(data, "ASC"))
+print(sortData(weights, manufactures, "DESC"))
