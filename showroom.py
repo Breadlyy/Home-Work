@@ -1,27 +1,40 @@
 class Node:
-    def __init__(self,nextNode, prevNode,item):
+    def __init__(self, item, nextNode = None, prevNode = None):
         self.nextNode = nextNode;
-        self.prevNode = None;
-        self.item = None;
+        self.prevNode = prevNode;
+        self.item = item;
 
-class LinkedList:
+class LinkedList(object):
     def __init__(car):
         car.head = None
         car.start = None
         car.count = 0
 
-    def getDatabase(car):
+    def getDatabase(self):
         return car.count;
-    def getDatabaseHead():
-        pass  
+    def getDatabaseHead(self):
+        return self.head;
 
     def clean():
         LinkedList.clean()
 
-    def add(car):
-        node = Node()
-        
+    def add(self, item):
+        NewNode = Node(item);
+        NewNode.next = self.head
+        if self.head is not None:
+            self.head.prev = self.head
+            self.head = NewNode
+        self.count+= 1
 
+    def updateName(self, identification, name):
+        if identification == self.count:
+            self.head.name = name
+        self.count-=1
+        
+    def updateBrand(self, identification, brand):
+        if identification == self.count:
+                self.head.name = brand
+        self.count-= 1;
     def isEmpty(self):
         return self.head is None
 
@@ -88,7 +101,7 @@ class car:
         print(self.brand + " " + self.price);
 
 
-db = LinkedList()
+bd = LinkedList()
 
 
 def init(cars):
