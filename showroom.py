@@ -1,144 +1,151 @@
 class Node:
-    def __init__(self, item, nextNode = None, prevNode = None):
+     def __init__(self, data, nextNode = None, prevNode = None):
         self.nextNode = nextNode;
         self.prevNode = prevNode;
-        self.item = item;
+        self.data = data;
 
-class LinkedList(object):
-    def __init__(car):
-        car.head = None
-        car.start = None
-        car.count = 0
+class LinkedList():
+    def __init__(self):
+        self.head = None
+        self.tail = None
+        self.count = 0
 
     def getDatabase(self):
-        return car.count;
+        return LinkedList;
+
     def getDatabaseHead(self):
         return self.head;
 
-    def clean():
+    def clean(self):
         LinkedList.clean()
 
     def add(self, item):
-        NewNode = Node(item);
-        NewNode.next = self.head
-        if self.head is not None:
-            self.head.prev = self.head
-            self.head = NewNode
-        self.count+= 1
+     NewNode = Node(item);
+     price = item.price
+     length = 0
+     if self.head is not None:
+      while length <= self.count:
+          if item.price <= self.head.data.price:
+              item, self.head = self.head, item;
+          self.count-=1;
+     if  item.price > price:
+          self.head = NewNode
+          cost = item.price;
+     else:
+         self.head = NewNode;
+         cost = item.price;
+     self.count+= 1
+
+
 
     def updateName(self, identification, name):
-        if identification == self.count:
-            self.head.name = name
-        self.count-=1
+        while True:
+             if identification == self.count:
+                self.head.name = name
+                break;  
+             elif identification >= self.count:
+              return None;
+             self.count-=1;
         
     def updateBrand(self, identification, brand):
-        if identification == self.count:
+     while True:
+            if identification == self.count:
                 self.head.name = brand
-        self.count-= 1;
+                break;  
+            elif identification >= self.count:
+                return None;
+            self.count-=1;
+        
+    def activateCar(self, identification):
+        while True:
+         if identification == self.count:
+            self.head.active = 1;
+            break;
+         elif identification >= self.count:
+             return None
+         self.count-=1;
+        
+
+    def deactivateCar(self, identification):
+        pass
+    
+    def calculateCarPrice(self):
+        pass
     def isEmpty(self):
         return self.head is None
 
-    def push(self,item):
-        node = Node(item)
-        if not self.head:
-            self.head = self.end = node
-        else:
-            node.next = self.head
-            self.head = node
-        self.count +=1
-
-    def pop(self):
-        if self.head:
-            ret = self.head.data
-            self.head = self.head.next
-            if self.head == None:
-                self.end = None
-            self.count -=1
-            return ret
-
-    def pushEnd(self, item):
-        node = Node(item)
-        if not self.end:
-            self.head = self.end = node
-        else:
-            self.end.next = node
-            self.end = node
-        self.count +=1
-
-    def popEnd(self):
-        if self.head:
-            self.count -=1
-            ret = self.end.data
-            if self.head == self.end:
-                self.head = self.end = None
-            else:
-                cur = self.head
-                while cur.next != self.end:
-                    cur = cur.next
-                self.end = cur
-                self.end.next = None
-            return ret
-
-
     def size(self):
-#        current = self.head
-#        count = 0
-#        while current != None:
-#            count += 1
-#            current = current.next
-#        return count
-        return self.count
+     return self.count;
+
+    def print_(self):
+        temp_node = self.head
+        while self.count != 0:
+            print(temp_node);
+            self.count-=1;
+        
 
 
-class car:
-      def __init__(self, name: str, brand: str, price: int, active: bool):
-         self.name = name;
-         self.brand = brand;
-         self.price = price;
-         self.active = active;
+class Car:
+    def __init__(self, identification, name, brand, price, active):
+        self.identification = identification;
+        self.name = name;
+        self.brand = brand;
+        self.price = price;
+        self.active = active;
          
-      def __str__(self):
-        print(self.brand + " " + self.price);
-
-
-bd = LinkedList()
-
 
 def init(cars):
-    pass
-
+  for i in range(len(cars) - 1):
+      db.add(cars[i]);
 
 def add(car):
-    pass
+   db.add(car);
 
 
 def updateName(identification, name):
-    pass
+    db.updateName(identification, name)
 
 
 def updateBrand(identification, brand):
-    pass
+    db.updateName(identification, brand)
 
 
 def activateCar(identification):
-    pass
+    db.activateCar(identification);
 
 
 def deactivateCar(identification):
-    pass
+    db.deactivateCar(identification)
 
 
 def getDatabaseHead():
-    pass
+    db.getDatabaseHead()
 
 
 def getDatabase():
-    pass
+    db.getDatabase();
 
 
 def calculateCarPrice():
-    pass
+    db.calculateCarPrice();
 
 
 def clean():
-    pass
+    db.clean()    
+
+db = LinkedList()
+car1 = Car(1, "RAM", "Dodge", 10000, 1);
+car2 = Car(2, "Skoda", "Superb", 8000, 1);
+car3 = Car(3, "Lada", "Priora", 2000, 1);
+car4 = Car(4, "Lada", "Granta", 4000, 1);
+cars = [car1, car2, car3,car4];
+for i in range(len(cars)):
+    print(cars[i].price);
+    
+
+
+init(cars);
+
+
+db.print_();
+
